@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class ArrayManipulator {
 
     // instance variables
@@ -9,7 +11,9 @@ public class ArrayManipulator {
      *  @param howManyStrings  How many elements to put in the words array
      */
     public ArrayManipulator(int[] nums, int howManyStrings)
-    { /* implement this method! */ }
+    { this.nums = nums;
+        words = new String[howManyStrings];
+    }
 
 
     /** Returns the index of the middle element of nums; if the length of the list
@@ -24,7 +28,11 @@ public class ArrayManipulator {
     middle indices are 1 and 2, so return 1 (te earlier of the two)
      */
     public int getNumsMiddleIndex()
-    { /* implement this method! */ }
+    {if (nums.length % 2 == 0 ){
+        return (nums.length/2) - 1;
+    }
+        return nums.length/2;
+    }
 
 
     /** Returns the average, as a double, of the average of the first, last, and
@@ -34,7 +42,9 @@ public class ArrayManipulator {
      *  @return  the average of the first, last, and middle elements
      */
     public double getNumsAverage()
-    { /* implement this method! */ }
+    {return ((double)nums[0] + nums[nums.length - 1] + nums[getNumsMiddleIndex()]) /3;
+
+    }
 
 
     /** Returns true if both the nums and words arrays have the same number of
@@ -43,7 +53,11 @@ public class ArrayManipulator {
      *  @return  returns true if the  two arrays are equal in length; false if not
      */
     public boolean sameLengths()
-    { /* implement this method! */ }
+    {if (nums.length == words.length ){
+    return true;}else{
+        return false;
+    }
+    }
 
     /** Updates the element of the words array at index idx to the new value
      *  provided and returns true to indicate a successful update; if, however,
@@ -52,8 +66,14 @@ public class ArrayManipulator {
      *
      *  @return  true if the update was successful, false otherwise.
      */
-    public boolean updateWordsListAt(int idx, String newValue)
-    { /* implement this method! */ }
+    public boolean updateWordsListAt(int idx, String newValue) {
+        if (idx > words.length - 1) {
+            return false;
+        } else {
+            words[idx] = newValue;
+            return true;
+        }
+    }
 
 
     /** Returns the number of characters that are contained in the last element of
@@ -62,8 +82,17 @@ public class ArrayManipulator {
      *  @return  how many characters are in the last element of words; 0 if the
      *           last element is null
      */
-    public int howLongLastWord()
-    { /* implement this method! */ }
+    public int howLongLastWord() {
+        if (words[words.length - 1] == null) {
+            return 0;
+
+
+        }else{
+            return words[words.length - 1].length();
+
+        }
+
+    }
 
 
     /** Returns the int in the nums array located at the specified index
@@ -73,7 +102,7 @@ public class ArrayManipulator {
      */
     public int getNumAt(int idx)
     {
-        /* implement this method! */
+        return nums[idx];
     }
 
 
@@ -84,6 +113,6 @@ public class ArrayManipulator {
      */
     public String getWordAt(int idx)
     {
-        /* implement this method! */
+        return words[idx];
     }
 }
